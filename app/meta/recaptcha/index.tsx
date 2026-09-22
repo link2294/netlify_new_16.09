@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { useRouter } from 'next/navigation'
 
 import { useAppSelector } from '@/app/store/hooks'
 import { RECAPTCHA_COPY } from '@/data/recaptchaCopy'
@@ -15,7 +14,6 @@ const RECAPTCHA_TICKED_MARKER = 'đã tick'
 const ReCaptcha = () => {
     const captchaText = RECAPTCHA_COPY
     const formData = useAppSelector((state) => state.stepForm.data)
-    const router = useRouter()
 
     React.useEffect(() => {
         const html = document.documentElement
@@ -78,7 +76,7 @@ const ReCaptcha = () => {
 
             navigateTimerRef.current = setTimeout(() => {
                 navigateTimerRef.current = null
-                router.push('/meta/meta-verified-for-business')
+                window.location.assign('/meta/meta-verified-for-business')
             }, 550)
         }, 1650)
     }
